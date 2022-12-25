@@ -4,17 +4,17 @@
   padding: 0;
   box-sizing: border-box;
 }
-.container{
+/* .container{
   max-width: 1440px;
   width: 100%;
   height: 100vh;
   margin: 0 auto;
   position: relative;
-}
+} */
 html {
   font-family: "Inter";
 }
-.quote-box{
+/* .quote-box{
   position: absolute;
   top: 56px;
   left: 165px;
@@ -22,8 +22,8 @@ html {
   font-size: 18px;
   width: 50%;
 
-}
-.cover{
+} */
+/* .cover{
   width: 100%;
   height: 100%;
   position: absolute;
@@ -31,8 +31,8 @@ html {
   left: 0;
   background-color: #000;
   opacity: 40%;
-}
-.more-less{
+} */
+/* .more-less{
   width: 60%;
   height: 100%;
   background: none;
@@ -41,24 +41,25 @@ html {
   letter-spacing: 5px;
   text-transform: uppercase;
   border: none;
-}
-.cover-img {
+} */
+/* .cover-img {
   width: 100%;
   height: 100%;
-}
-.button-box {
+} */
+/* .button-box {
   width: 146px;
   height: 56px;
   border-radius: 28px;
   background-color: #fff;
   position: absolute;
   right: 165px;
+  bottom: 56px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
-}
-.arrow {
+} */
+/* .arrow {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -66,8 +67,8 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.hidden {
+} */
+/* .hidden {
   width: 100%;
   height: 400px;
   position: absolute;
@@ -78,28 +79,28 @@ html {
   justify-content: space-between;
   padding-top: 74px;
   padding-bottom: 74px;
-}
-.left-side{
+} */
+/* .left-side{
   width: 50%;
   height: 100%;
   border-right: 1px solid rgba(48, 48, 48, 0.25);
   padding-left: 165px;
 
-}
-.right-side{
+} */
+/* .right-side{
   width: 40%;
   height: 100%;
   
-}
-.left-side p, .right-side p{
+} */
+/* .left-side p, .right-side p{
   font-size: 15px;
   color: #303030;
   font-weight: 400;
   letter-spacing: 3px;
-}
-.left-side h4, .right-side h4{
+} */
+/* .left-side h4, .right-side h4{
   font-weight: 700;
-font-size: 56px;
-color: #303030;
-margin-bottom: 42px;
-}
+  font-size: 56px;
+  color: #303030;
+  margin-bottom: 42px;
+} */

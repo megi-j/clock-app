@@ -1,4 +1,9 @@
+import styled from "styled-components";
 import refresh from "./images/refresh.png";
+import { QuoteAuthor } from "./QuoteAuthor";
+import { QuoteBox } from "./QuoteBox";
+import { QuoteButton } from "./QuoteButton";
+import { QuoteText } from "./QuoteText";
 
 type Props = {
   quote: string;
@@ -9,15 +14,19 @@ type Props = {
 
 export default function Quote(props: Props) {
   return (
-    <div
-      className="quote-box"
-      style={{ display: props.clicked ? "none" : "block" }}
-    >
-      <p>{props.quote}</p>
-      <h5>{props.author}</h5>
-      <button onClick={props.getQuote}>
-        <img style={{ background: "none" }} src={refresh} alt="" />
-      </button>
-    </div>
+    <QuoteBox clicked={props.clicked}>
+      <QuoteInsideBox>
+        <QuoteText>{props.quote}</QuoteText>
+        <QuoteAuthor>{props.author}</QuoteAuthor>
+      </QuoteInsideBox>
+
+      <QuoteButton onClick={props.getQuote}>
+        <img src={refresh} alt="refresh" />
+      </QuoteButton>
+    </QuoteBox>
   );
 }
+
+const QuoteInsideBox = styled.div`
+  width: 95%;
+`;

@@ -6,7 +6,14 @@ import { clockType } from "./types";
 import Quote from "./Quote";
 import Button from "./Button";
 import moment from "moment";
-
+import { Container } from "./Container";
+import { Cover } from "./Cover";
+import { Hidden } from "./Hidden";
+import styled from "styled-components";
+import { TimeZoneBox } from "./TimeZoneBox";
+import { TimeZoneText } from "./TimeZoneText";
+import { WeekInfo } from "./WeekInfo";
+import { TimeZoneInfo } from "./TimeZoneInfo";
 function App() {
   const [time, setTime] = useState<any>({});
   const [quote, setQuote] = useState<any>({});
@@ -59,40 +66,40 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="cover"></div>
-      <img className="cover-img" src={photo} alt="" />
-      <div className="hidden" style={{ display: clicked ? "flex" : "none" }}>
-        <div className="left-side">
-          <p>CURRENT TIMEZONE</p>
-          <h4>{time.timezone}</h4>
-          <p>DAY OF THE YEAR</p>
-          <h4>{time.day_of_year}</h4>
-        </div>
-        <div className="right-side">
-          <p>DAY OF THE WEEK</p>
-          <h4>{time.day_of_week}</h4>
-          <p>WEEK NUMBER</p>
-          <h4>{time.week_number}</h4>
-        </div>
-      </div>
+    <Container>
+      <Cover></Cover>
+      <CoverImg src={photo} alt="cover" />
+      <Hidden clicked={clicked}>
+        <TimeZoneBox>
+          <TimeZoneText>CURRENT TIMEZONE</TimeZoneText>
+          <TimeZoneInfo>{time.timezone}</TimeZoneInfo>
+          <TimeZoneText>DAY OF THE YEAR</TimeZoneText>
+          <TimeZoneInfo>{time.day_of_year}</TimeZoneInfo>
+        </TimeZoneBox>
+        <WeekInfo>
+          <TimeZoneText>DAY OF THE WEEK</TimeZoneText>
+          <TimeZoneInfo>{time.day_of_week}</TimeZoneInfo>
+          <TimeZoneText>WEEK NUMBER</TimeZoneText>
+          <TimeZoneInfo>{time.week_number}</TimeZoneInfo>
+        </WeekInfo>
+      </Hidden>
       <Quote
         quote={quote.content}
         author={quote.author}
         getQuote={getQuote}
         clicked={clicked}
       />
-      <p
+      {/* <p
         style={{ position: "absolute", left: 165, bottom: 400, color: "#fff" }}
-      >
-        {/* {time.datetime < 12 && time.datetime > 5
+      > */}
+      {/* {time.datetime < 12 && time.datetime > 5
           ? "Good Morning"
           : time.datetime > 13 && time.datetime < 18
           ? "Good Afternoon"
           : time.datetime > 18 && time.datetime < 23
           ? "Good Evening"
           : "good"} */}
-      </p>
+      {/* </p> */}
       <Moment
         style={{
           position: "absolute",
@@ -108,8 +115,13 @@ function App() {
       </Moment>
       <Button handleClick={handleClick} clicked={clicked} />
       {/* <h4>{location}</h4> */}
-    </div>
+    </Container>
   );
 }
 
 export default App;
+
+const CoverImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;

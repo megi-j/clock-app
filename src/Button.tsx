@@ -1,3 +1,8 @@
+import styled from "styled-components";
+import "styled-components";
+import { ButtonStyle } from "./ButtonStyle";
+import { ArrowDiv } from "./ArrowDiv";
+import { ButtonDiv } from "./ButtonDiv";
 type Props = {
   handleClick: () => void;
   clicked: boolean;
@@ -5,13 +10,9 @@ type Props = {
 
 export default function Button(props: Props) {
   return (
-    <div
-      onClick={props.handleClick}
-      className="button-box"
-      style={{ bottom: props.clicked ? 456 : 56 }}
-    >
-      <button className="more-less">{props.clicked ? "Less" : "More"}</button>
-      <div className="arrow">
+    <ButtonDiv clicked={props.clicked} onClick={props.handleClick}>
+      <ButtonStyle>{props.clicked ? "Less" : "More"}</ButtonStyle>
+      <ArrowDiv>
         {props.clicked ? (
           <svg
             width="14"
@@ -33,7 +34,7 @@ export default function Button(props: Props) {
             <path d="M1 1L7 7L13 1" stroke="white" strokeWidth="2" />
           </svg>
         )}
-      </div>
-    </div>
+      </ArrowDiv>
+    </ButtonDiv>
   );
 }
