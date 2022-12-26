@@ -6,9 +6,9 @@ import { QuoteButton } from "./QuoteButton";
 import { QuoteText } from "./QuoteText";
 
 type Props = {
-  quote: string;
+  quote: string | undefined;
   getQuote: () => void;
-  author: string;
+  author: string | undefined;
   clicked: boolean;
 };
 

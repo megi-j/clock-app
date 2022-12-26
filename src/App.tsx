@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import Moment from "react-moment";
 import photo from "./images/photo.png";
-import { clockType } from "./types";
+import { ClockType, QuoteType } from "./types";
 import Quote from "./Quote";
 import Button from "./Button";
 import moment from "moment";
@@ -24,9 +24,9 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 function App() {
-  const [time, setTime] = useState<any>({});
-  const [quote, setQuote] = useState<any>({});
-  const [location, setLocation] = useState<any>({});
+  const [time, setTime] = useState<ClockType | undefined>(undefined);
+  const [quote, setQuote] = useState<QuoteType | undefined>(undefined);
+  // const [location, setLocation] = useState<any>({});
   const [clicked, setClicked] = useState<boolean>(false);
 
   const firstRander = useRef(true);
@@ -90,20 +90,20 @@ function App() {
       <Hidden clicked={clicked}>
         <TimeZoneBox>
           <TimeZoneText>CURRENT TIMEZONE</TimeZoneText>
-          <TimeZoneInfo>{time.timezone}</TimeZoneInfo>
+          <TimeZoneInfo>{time ? time.timezone : null}</TimeZoneInfo>
           <TimeZoneText>DAY OF THE YEAR</TimeZoneText>
-          <TimeZoneInfo>{time.day_of_year}</TimeZoneInfo>
+          <TimeZoneInfo>{time ? time.day_of_year : null}</TimeZoneInfo>
         </TimeZoneBox>
         <WeekInfo>
           <TimeZoneText>DAY OF THE WEEK</TimeZoneText>
-          <TimeZoneInfo>{time.day_of_week}</TimeZoneInfo>
+          <TimeZoneInfo>{time ? time.day_of_week : null}</TimeZoneInfo>
           <TimeZoneText>WEEK NUMBER</TimeZoneText>
-          <TimeZoneInfo>{time.week_number}</TimeZoneInfo>
+          <TimeZoneInfo>{time ? time.week_number : null}</TimeZoneInfo>
         </WeekInfo>
       </Hidden>
       <Quote
-        quote={quote.content}
-        author={quote.author}
+        quote={quote && quote.content}
+        author={quote && quote.author}
         getQuote={getQuote}
         clicked={clicked}
       />
@@ -130,7 +130,7 @@ function App() {
         }}
         format="hh:mm a"
       >
-        {time.datetime}
+        {time && time.datetime}
       </Moment>
       <Button handleClick={handleClick} clicked={clicked} />
       {/* <h4>{location}</h4> */}
