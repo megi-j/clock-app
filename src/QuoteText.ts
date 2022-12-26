@@ -6,4 +6,5 @@ export const QuoteText = styled.p`
   font-size: 18px;
   line-height: 28px;
   color: #ffffff;
+  font-weight: 400;
 `;

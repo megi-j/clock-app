@@ -9,4 +9,6 @@ export const ButtonStyle = styled.button`
   letter-spacing: 5px;
   text-transform: uppercase;
   border: none;
+  font-size: 16px;
+  font-weight: 700;
 `;

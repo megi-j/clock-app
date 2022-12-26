@@ -9,11 +9,20 @@ import moment from "moment";
 import { Container } from "./Container";
 import { Cover } from "./Cover";
 import { Hidden } from "./Hidden";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { TimeZoneBox } from "./TimeZoneBox";
 import { TimeZoneText } from "./TimeZoneText";
 import { WeekInfo } from "./WeekInfo";
 import { TimeZoneInfo } from "./TimeZoneInfo";
+import { Helmet } from "react-helmet";
+const GlobalStyles = createGlobalStyle`
+  *{
+    font-family: "Inter";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
 function App() {
   const [time, setTime] = useState<any>({});
   const [quote, setQuote] = useState<any>({});
@@ -21,6 +30,7 @@ function App() {
   const [clicked, setClicked] = useState<boolean>(false);
 
   const firstRander = useRef(true);
+
   function getTime() {
     fetch("https://worldtimeapi.org/api/ip/")
       .then((response) => response.json())
@@ -61,12 +71,20 @@ function App() {
       firstRander.current = false;
     }
   }, []);
+
   function handleClick() {
     setClicked(!clicked);
   }
 
   return (
     <Container>
+      <GlobalStyles />
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
       <Cover></Cover>
       <CoverImg src={photo} alt="cover" />
       <Hidden clicked={clicked}>
@@ -107,7 +125,8 @@ function App() {
           left: 165,
           fontSize: 200,
           color: "#fff",
-          fontWeight: "bold",
+          fontWeight: "700",
+          letterSpacing: "-5px",
         }}
         format="hh:mm a"
       >
