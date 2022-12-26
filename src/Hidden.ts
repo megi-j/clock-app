@@ -13,6 +13,13 @@ export const Hidden = styled.div<HiddenProps>`
   backdrop-filter: blur(20.3871px);
   display: ${(props) => (props.clicked ? "flex" : "none")};
   justify-content: space-between;
+
   padding-top: 74px;
   padding-bottom: 74px;
+  @media (max-width: 375px) {
+    height: 256px;
+    flex-direction: column;
+    padding: 48px 26px;
+    border: 2px solid red;
+  }
 `;

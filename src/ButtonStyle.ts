@@ -11,4 +11,8 @@ export const ButtonStyle = styled.button`
   border: none;
   font-size: 16px;
   font-weight: 700;
+  @media (max-width: 375px) {
+    font-size: 12px;
+    letter-spacing: 3.75px;
+  }
 `;

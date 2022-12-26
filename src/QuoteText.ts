@@ -7,4 +7,7 @@ export const QuoteText = styled.p`
   line-height: 28px;
   color: #ffffff;
   font-weight: 400;
+  @media (max-width: 375px) {
+    font-size: 12px;
+  }
 `;

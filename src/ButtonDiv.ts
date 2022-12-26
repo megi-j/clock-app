@@ -15,4 +15,13 @@ export const ButtonDiv = styled.div<ButtonProps>`
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
+  @media (max-width: 768px) {
+    left: 64px;
+    bottom: ${(props) => (props.clicked ? "456px" : "64px")};
+  }
+  @media (max-width: 375px) {
+    width: 115px;
+    height: 39px;
+    bottom: ${(props) => (props.clicked ? "296px" : "40px")};
+  }
 `;

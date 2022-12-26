@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import Moment from "react-moment";
 import photo from "./images/photo.png";
+import cover from "./images/cover-tablet.png";
+import coverMob from "./images/coverMob.png";
 import { ClockType, QuoteType } from "./types";
 import Quote from "./Quote";
 import Button from "./Button";
@@ -10,11 +12,12 @@ import { Container } from "./Container";
 import { Cover } from "./Cover";
 import { Hidden } from "./Hidden";
 import styled, { createGlobalStyle } from "styled-components";
-import { TimeZoneBox } from "./TimeZoneBox";
+import { CurrentTimeZone } from "./CurrentTimeZone";
 import { TimeZoneText } from "./TimeZoneText";
 import { WeekInfo } from "./WeekInfo";
 import { TimeZoneInfo } from "./TimeZoneInfo";
 import { Helmet } from "react-helmet";
+import { TimeZoneBox } from "./TimeZoneBox";
 const GlobalStyles = createGlobalStyle`
   *{
     font-family: "Inter";
@@ -86,20 +89,30 @@ function App() {
         />
       </Helmet>
       <Cover></Cover>
-      <CoverImg src={photo} alt="cover" />
+      <CoverImgDesktop src={photo} alt="cover" />
+      <CoverImgTablet src={cover} alt="cover" />
+      <CoverImgMobile src={coverMob} alt="cover" />
       <Hidden clicked={clicked}>
         <TimeZoneBox>
-          <TimeZoneText>CURRENT TIMEZONE</TimeZoneText>
-          <TimeZoneInfo>{time ? time.timezone : null}</TimeZoneInfo>
-          <TimeZoneText>DAY OF THE YEAR</TimeZoneText>
-          <TimeZoneInfo>{time ? time.day_of_year : null}</TimeZoneInfo>
+          <CurrentTimeZone>
+            <TimeZoneText>CURRENT TIMEZONE</TimeZoneText>
+            <TimeZoneInfo>{time && time.timezone}</TimeZoneInfo>
+          </CurrentTimeZone>
+          <CurrentTimeZone>
+            <TimeZoneText>DAY OF THE YEAR</TimeZoneText>
+            <TimeZoneInfo>{time && time.day_of_year}</TimeZoneInfo>
+          </CurrentTimeZone>
         </TimeZoneBox>
-        <WeekInfo>
-          <TimeZoneText>DAY OF THE WEEK</TimeZoneText>
-          <TimeZoneInfo>{time ? time.day_of_week : null}</TimeZoneInfo>
-          <TimeZoneText>WEEK NUMBER</TimeZoneText>
-          <TimeZoneInfo>{time ? time.week_number : null}</TimeZoneInfo>
-        </WeekInfo>
+        <TimeZoneBox>
+          <WeekInfo>
+            <TimeZoneText>DAY OF THE WEEK</TimeZoneText>
+            <TimeZoneInfo>{time && time.day_of_week}</TimeZoneInfo>
+          </WeekInfo>
+          <WeekInfo>
+            <TimeZoneText>WEEK NUMBER</TimeZoneText>
+            <TimeZoneInfo>{time && time.week_number}</TimeZoneInfo>
+          </WeekInfo>
+        </TimeZoneBox>
       </Hidden>
       <Quote
         quote={quote && quote.content}
@@ -123,7 +136,7 @@ function App() {
           position: "absolute",
           bottom: clicked ? 500 : 142,
           left: 165,
-          fontSize: 200,
+          fontSize: 40,
           color: "#fff",
           fontWeight: "700",
           letterSpacing: "-5px",
@@ -140,7 +153,30 @@ function App() {
 
 export default App;
 
-const CoverImg = styled.img`
+const CoverImgDesktop = styled.img`
   width: 100%;
   height: 100%;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const CoverImgTablet = styled.img`
+  width: 100%;
+  height: 100%;
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+  @media (max-width: 375px) {
+    display: none;
+  }
+`;
+
+const CoverImgMobile = styled.img`
+  width: 100%;
+  height: 100%;
+  display: none;
+  @media (max-width: 375px) {
+    display: block;
+  }
 `;

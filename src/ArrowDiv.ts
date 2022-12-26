@@ -8,4 +8,11 @@ export const ArrowDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    background-color: #999999;
+  }
+  @media (max-width: 375px) {
+    width: 32px;
+    height: 32px;
+  }
 `;
