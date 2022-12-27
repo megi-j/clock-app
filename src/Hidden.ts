@@ -20,6 +20,5 @@ export const Hidden = styled.div<HiddenProps>`
     height: 256px;
     flex-direction: column;
     padding: 48px 26px;
-    border: 2px solid red;
   }
 `;

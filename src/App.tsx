@@ -18,6 +18,7 @@ import { WeekInfo } from "./WeekInfo";
 import { TimeZoneInfo } from "./TimeZoneInfo";
 import { Helmet } from "react-helmet";
 import { TimeZoneBox } from "./TimeZoneBox";
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 const GlobalStyles = createGlobalStyle`
   *{
     font-family: "Inter";
@@ -31,9 +32,18 @@ function App() {
   const [quote, setQuote] = useState<QuoteType | undefined>(undefined);
   // const [location, setLocation] = useState<any>({});
   const [clicked, setClicked] = useState<boolean>(false);
+  const [resolution, setResolution] = useState<number | undefined>(undefined);
 
   const firstRander = useRef(true);
+  useEffect(() => {
+    function handleResize() {
+      setResolution(window.innerWidth);
+      console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+      console.log(resolution);
+    }
 
+    window.addEventListener("resize", handleResize);
+  });
   function getTime() {
     fetch("https://worldtimeapi.org/api/ip/")
       .then((response) => response.json())
@@ -78,7 +88,17 @@ function App() {
   function handleClick() {
     setClicked(!clicked);
   }
-
+  function calc() {
+    if (resolution === undefined || resolution > 1440) {
+      return 200;
+    } else if (resolution < 1440 && resolution > 768) {
+      return 200;
+    } else if (resolution < 768 && resolution > 375) {
+      return 175;
+    } else if (resolution < 375) {
+      return 100;
+    }
+  }
   return (
     <Container>
       <GlobalStyles />
@@ -136,7 +156,7 @@ function App() {
           position: "absolute",
           bottom: clicked ? 500 : 142,
           left: 165,
-          fontSize: 40,
+          fontSize: calc(),
           color: "#fff",
           fontWeight: "700",
           letterSpacing: "-5px",
@@ -152,7 +172,15 @@ function App() {
 }
 
 export default App;
-
+// const timeStyle = {
+//   position: "absolute",
+//   bottom: clicked ? 500 : 142,
+//   left: 165,
+//   fontSize: 40,
+//   color: "#fff",
+//   fontWeight: "700",
+//   letterSpacing: "-5px",
+// };
 const CoverImgDesktop = styled.img`
   width: 100%;
   height: 100%;
