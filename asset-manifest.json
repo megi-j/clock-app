@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/clock-app/static/css/main.e6c13ad2.css",
-    "main.js": "/clock-app/static/js/main.15b69d7b.js",
+    "main.js": "/clock-app/static/js/main.edf0404d.js",
     "static/media/photo.png": "/clock-app/static/media/photo.b22267d031805471a382.png",
     "static/media/cover-tablet.png": "/clock-app/static/media/cover-tablet.ad2cf9c80b6041e77af5.png",
     "static/media/coverMob.png": "/clock-app/static/media/coverMob.fdd1bb4b76bf4e7bdaf0.png",
     "index.html": "/clock-app/index.html",
     "main.e6c13ad2.css.map": "/clock-app/static/css/main.e6c13ad2.css.map",
-    "main.15b69d7b.js.map": "/clock-app/static/js/main.15b69d7b.js.map"
+    "main.edf0404d.js.map": "/clock-app/static/js/main.edf0404d.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.15b69d7b.js"
+    "static/js/main.edf0404d.js"
   ]
 }
