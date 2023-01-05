@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
 function App() {
   const [time, setTime] = useState<ClockType | undefined>(undefined);
   const [quote, setQuote] = useState<QuoteType | undefined>(undefined);
-  // const [location, setLocation] = useState<any>({});
+  const [location, setLocation] = useState<any>(undefined);
   const [clicked, setClicked] = useState<boolean>(false);
   const [resolution, setResolution] = useState<number | undefined>(undefined);
 
@@ -62,6 +62,7 @@ function App() {
         //     console.log(loc);
         //     setLocation(loc.location);
         //   });
+        //მიწერს რო თვიური ლიმიტი ამოვწურე ,როგორც ვნახე 21 იანვარს უნდა განახლდეს და ისევ შევძლებ ახლიდან ინფოს წამოღებას,შესაბამისად შევძლებ შეცვლას ფოტოსი და მისალმების წარწერის
       });
   }
   useEffect(() => {
@@ -166,7 +167,7 @@ function App() {
         {time && time.datetime}
       </Moment>
       <Button handleClick={handleClick} clicked={clicked} />
-      {/* <h4>{location}</h4> */}
+      <h4>{location}</h4>
     </Container>
   );
 }
