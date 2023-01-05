@@ -93,11 +93,9 @@ function App() {
     if (resolution === undefined || resolution > 1440) {
       return 200;
     } else if (resolution < 1440 && resolution > 768) {
-      return 200;
-    } else if (resolution < 768 && resolution > 375) {
       return 175;
-    } else if (resolution < 375) {
-      return 100;
+    } else if (resolution < 768) {
+      return 50;
     }
   }
   return (
@@ -156,7 +154,7 @@ function App() {
         style={{
           position: "absolute",
           bottom: clicked ? 500 : 142,
-          left: 165,
+          left: resolution !== undefined && resolution < 375 ? 64 : 165,
           fontSize: calc(),
           color: "#fff",
           fontWeight: "700",
